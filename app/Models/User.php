@@ -42,17 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function orders() {
-        return $this->hasMany(Order::class);
-    }
-
-    public function getTotalUserOrdersPrice(){
-        $user_orders = $this->find($this->id)->orders;
-        $totalUserOrdersPrice = 0;
-        foreach($user_orders as $user_order){
-            $totalUserOrdersPrice += $user_order->getTotalOrderPrice();
-        }
-        return $totalUserOrdersPrice;
+    public function facturas() {
+        return $this->hasMany('App\Models\Factura');
     }
 
 }
