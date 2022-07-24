@@ -35,7 +35,7 @@ class JwtAuth{
                 'email'     =>  $user->email,
                 'name'      =>  $user->name,
                 'iat'       =>  time(),
-                'exp'       =>  time() + (60 * 60) // Expira en 1 hora
+                'exp'       =>  time() + (3600) // Expira en 1 hora
             );
 
             $jwt = JWT::encode($token, $this->key, 'HS256');

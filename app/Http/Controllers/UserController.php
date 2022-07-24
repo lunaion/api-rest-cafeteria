@@ -25,7 +25,7 @@ class UserController extends Controller
     
             // Validar datos
             $validate = Validator($params_array, [
-                'name'      => 'required|alpha',
+                'name'      => 'required',
                 'email'     => 'required|email|unique:users',
                 'password'  => 'required',
             ]);
@@ -129,7 +129,7 @@ class UserController extends Controller
             
             // Validar los datos
             $validate = Validator($params_array, [
-                'name'      => 'required|alpha',
+                'name'      => 'required',
                 'email'     => 'required|email|unique:users,'.$user->sub
             ]);
 
@@ -223,8 +223,55 @@ class UserController extends Controller
             $data = array(
                 'code'      => 404,
                 'status'    => 'error',
-                'messge'      => 'El usuario no existe.'
+                'messge'      => 'El usuario con el id:'.$id.' no existe.'
             );
+        }
+        
+        return response()->json($data, $data['code']);
+    }
+
+    public function index() {
+        $user = User::all();
+
+        if (is_object($user)) {
+            $data = array(
+                'code'      => 200,
+                'status'    => 'success',
+                'user'      => $user
+            );
+        } else {
+            $data = array(
+                'code'      => 404,
+                'status'    => 'error',
+                'messge'      => 'No se encontraron registros.'
+            );
+        }
+        
+        return response()->json($data, $data['code']);
+    }
+
+    // Eliminar usuario
+    public function destroy($id) {
+
+        // Conseguir el registro
+        $user = User::find($id);
+
+        if (!empty($user)) {
+            // Borrarlos
+            $user->delete();
+
+            // Devolver algo
+            $data = [
+                'code'      => 200,
+                'status'    => 'success',
+                'message'      => 'El usuario ' .$user->name. ' ha sido elimnado correctamente'
+            ];
+        } else {
+            $data = [
+                'code'      => 404,
+                'status'    => 'error',
+                'message'   => 'El usuario con Id:'.$id.' no existe'
+            ];
         }
         
         return response()->json($data, $data['code']);

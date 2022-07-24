@@ -22,7 +22,7 @@ class ProductosTableSeeder extends Seeder
         // Crear productos ficticios en la tabla
         for ($i=0; $i < 5; $i++) { 
             Producto::create([
-                'decripcion'    => $faker->sentence(4),
+                'descripcion'    => $faker->sentence(4),
                 'precio'        => $faker->numberBetween(10, 500),      
                 'stock'         => $faker->numberBetween(10, 500),
             ]);
