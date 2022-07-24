@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\JwtAuth;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -15,14 +16,7 @@ class UserTableSeeder extends Seeder {
     public function run() {
         // Vaciar la tabla
         User::truncate();
-
         $faker = \Faker\Factory::create();
-
-        /**
-         * Crear la misma clave para todos los usuarios
-         * conviene hacerlo antes del for para que el seeder
-         * no se vuelva lento.
-         */
 
         $password = Hash('sha256','123456');
 

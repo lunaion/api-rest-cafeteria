@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\JwtAuth;
 use App\Models\Producto;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProductosTableSeeder extends Seeder
@@ -16,7 +18,6 @@ class ProductosTableSeeder extends Seeder
     {
         // Vaciar la tabla.
         Producto::truncate();
-
         $faker = \Faker\Factory::create();
 
         // Crear productos ficticios en la tabla
