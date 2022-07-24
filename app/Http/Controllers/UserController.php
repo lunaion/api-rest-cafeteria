@@ -27,7 +27,7 @@ class UserController extends Controller
             $validate = Validator($params_array, [
                 'name'      => 'required',
                 'email'     => 'required|email|unique:users',
-                'password'  => 'required',
+                'password'  => 'required|min:6',
             ]);
             
             if ($validate->fails()) {
