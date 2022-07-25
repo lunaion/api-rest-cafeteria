@@ -154,7 +154,7 @@ class UserController extends Controller
             $data = array(
                 'code'      => 400,
                 'status'    => 'error',
-                'message'   => 'El usuario no está indentificado.'
+                'message'   => 'El usuario no está identificado.'
             );
         }
 
@@ -264,7 +264,7 @@ class UserController extends Controller
             $data = [
                 'code'      => 200,
                 'status'    => 'success',
-                'message'      => 'El usuario ' .$user->name. ' ha sido elimnado correctamente'
+                'message'      => 'El usuario ' .$user->name. ' ha sido eliminado correctamente'
             ];
         } else {
             $data = [
